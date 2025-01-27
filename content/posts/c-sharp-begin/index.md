@@ -4,9 +4,7 @@ date: 2025-01-26T13:57:48+08:00
 description: C# 初学笔记
 lastmod: 2025-01-26T13:57:48+08:00
 avatar: /me/shane.png
-cover: bg.jpg
-images:
-  - bg.jpg
+cover: https://gitee.com/shanegitee/pictures/raw/master/c-sharp-begin.webp
 categories:
   - programming language
 tags:

@@ -1,20 +1,18 @@
 ---
-title: 使用 jekyll 搭建自己的博客网站
+title: 用 jekyll 搭建博客网站
 date: 2025-01-26T13:57:48+08:00
 description: jekyll-theme-chirpy 建站过程
 lastmod: 2025-01-26T13:57:48+08:00
 avatar: /me/shane.png
-cover: sunset.jpg
-images:
-  - sunset.jpg
+cover: https://gitee.com/shanegitee/pictures/raw/master/blog-with-chirpy.webp
 categories:
-  - tech
+  - Blog
 tags:
-  - blog
+  - jekyll
 draft: false
 ---
 
-最近发现了一个非常好看的博客主题 [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)，基于 [jekyll](https://jekyllrb.com/) 搭建，瞬间被吸引，果断放弃 [Hugo](https://gohugo.io/)。记录一下我的建站过程。
+最近发现了一个非常好看的博客主题 [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)，基于 [jekyll](https://jekyllrb.com/) 搭建。
 
 > [!TIP]
 > 以下建站过程基于 Arch Linux。 
@@ -74,6 +72,9 @@ bundle
 ## 写文章
 
 文章位于 `_post` 文件夹下的 `markdown` 文件，关于文章的命名格式、[Front matter](https://jekyllrb.com/docs/front-matter/) 以及特殊格式的书写参见[官方 wiki](https://chirpy.cotes.page/posts/write-a-new-post/) 以及 [Jekyll 官方 wiki](https://jekyllrb.com/docs/)。
+
+> [!WARNING]
+> 文章的文件名称必须要用 `-` 连接时间和标题，如 `2025-1-28-hello-world.md`。
 
 ## 本地启动站点
 
