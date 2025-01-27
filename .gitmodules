@@ -1,0 +1,3 @@
+[submodule "themes/dream"]
+	path = themes/dream
+	url = git@github.com:shaneworld/hugo-theme-dream.git

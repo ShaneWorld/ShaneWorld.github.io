@@ -1,0 +1,5 @@
+# Go to https://ionic.io/ionicons to find available icons.
+socials = [
+  { href = "https://github.com/shaneworld", target="_blank", icon = "logo-github", title = "GitHub" },
+  { href = "https://www.instagram.com/not.shane.04", target="_blank", icon = "logo-instagram", title = "Instagram" },
+]
