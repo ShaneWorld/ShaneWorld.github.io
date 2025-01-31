@@ -96,7 +96,7 @@ hugo server -D
 
 执行后默认在 `localhost:1313` 端口可访问博客。在根目录中会生成 `public` 文件夹存放生成的静态文件。
 
-## 使用 Github Pages 部署
+## 部署
 
 新建一个 github 仓库，命名必须为 `USERNAME.github.io`，`USERNAME` 为 github 用户名。在设置里将 pages 里的 `Build and deployment` Source 改为 `GitHub Actions`。
 

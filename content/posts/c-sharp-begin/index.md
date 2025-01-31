@@ -9,7 +9,7 @@ categories:
   - programming language
 tags:
   - C#
-draft: true
+draft: false
 ---
 
 ## Arch Linux Neovim 配置 C# 开发环境
@@ -409,3 +409,286 @@ class Tabletop : Rectangle {
 C# **不支持多重继承**，但是可以**通过继承多个接口**实现。
 
 ### 多态性
+
+多态表现为一个接口，多个功能。
+
+- 静态多态性
+    - 函数重载
+    - 运算符重载
+- 动态多态性
+    使用 `abstract` 关键字创建抽象类
+
+    ```cs
+    abstract class Shape
+    {
+        abstract public int area();
+    }
+    class Rectangle:  Shape
+    {
+       private int length;
+       private int width;
+       public Rectangle( int a=0, int b=0)
+       {
+          length = a;
+          width = b;
+       }
+       public override int area ()
+       { 
+          Console.WriteLine("Rectangle 类的面积：");
+          return (width * length); 
+       }
+    }
+    ```
+
+    当一个定义在类中的函数需要在继承类中实现时，可以使用虚方法，虚方法使用 `virtual` 关键字声明。
+
+### 运算重载符
+
+重定义或重载内置的运算符，通过**关键字 `operator` 后跟运算符的符号来定义**。
+
+```cs
+class Box
+{
+  public int length;
+  public int width;
+
+  public static Box operator+ (Box a, Box b)
+  {
+    Box box = new Box();
+    box.length = a.length + b.length;
+    box.width = a.width + b.width;
+    return box;
+  }
+}
+```
+
+### 接口
+
+```cs
+interface IMyInterface
+{
+  void MethodToImplement();
+}
+```
+
+### 命名空间
+
+区分名称的方式。
+
+### 预处理指令
+
+编译器在实际编译开始之前对信息进行预处理。通过这些指令，可以**控制编译器如何编译文件或编译哪些部分**。
+
+所有的预处理指令都是以 `#` 开始，且在一行上，只有空白字符可以出现在预处理指令之前。**预处理指令不是语句，所以不以 `;` 结尾**。
+
+| 指令       | 描述                                                                 |
+|:------------:|:--------------------------------------------------------------------:|
+| `#define`  | 定义一个符号，可以用于条件编译。                                           |
+| `#undef`   | 取消定义一个符号。                                                       |
+| `#if`      | 开始一个条件编译块，如果符号被定义则包含代码块。                                 |
+| `#elif`    | 如果前面的 `#if` 或 `#elif` 条件不满足，且当前条件满足，则包含代码块。                 |
+| `#else`    | 如果前面的 `#if` 或 `#elif` 条件不满足，则包含代码块。                           |
+| `#endif`   | 结束一个条件编译块。                                                       |
+| `#warning` | 生成编译器警告信息。                                                       |
+| `#error`   | 生成编译器错误信息。                                                       |
+| `#region`  | 标记一段代码区域，可以在 IDE 中折叠和展开这段代码，便于代码的组织和阅读。               |
+| `#endregion` | 结束一个代码区域。                                                       |
+| `#line`    | 更改编译器输出中的行号和文件名，可以用于调试或生成工具的代码。                           |
+| `#pragma`  | 用于给编译器发送特殊指令，例如禁用或恢复特定的警告。                                   |
+| `#nullable` | 控制可空性上下文和注释，允许启用或禁用对可空引用类型的编译器检查。                         |
+
+使用预处理指令有以下作用：
+
+- 提高代码可读性：使用 `#region` 可以帮助分隔代码块，提高代码的组织性。
+- 条件编译：通过 `#if` 等指令可以在开发和生产环境中编译不同的代码，方便调试和发布。
+- 警告和错误：通过 `#warning` 和 `#error` 可以在编译时提醒开发人员需要注意的特定的问题。
+
+### 正则表达式
+
+详见 [菜鸟教程](https://www.runoob.com/csharp/csharp-regular-expressions.html)。
+
+### 异常处理
+
+使用 `try catch finally` 语句进行异常处理。
+
+```cs
+try
+{
+
+}
+catch(ExceptionName e1)
+{
+    // 抛出异常
+    Throw e;
+}
+catch (ExceptionName e2)
+{
+
+}
+// finally 语句是必须会执行的
+finally
+{
+
+}
+```
+
+### 文件的输入和输出
+
+参见 [菜鸟教程](https://www.runoob.com/csharp/csharp-file-io.html)。
+
+### C# 属性
+
+属性是类和结构体中用于封装数据的成员，可以看作是对字段的包装器，通常由 `get` 和 `set` 访问器构成。
+
+```cs
+public class DeBugInfo {
+  public int BugNo {get;}
+  public string Developer {get;}
+  public string LastReview {get;}
+  public string Message {get; set;}
+
+
+  public DeBugInfo(int bg, string dev, string lr) {
+    BugNo = bg;
+    Developer = dev;
+    LastReview = lr;
+  }
+}
+```
+`get` 和 `set` 是属性访问器，`get` 表明该属性只读，一旦初始化就不能修改。`set` 表明该属性可以修改。属性访问器（accessor）包含有助于获取（读取或计算）或设置（写入）属性的可执行语句。
+
+上述代码中的 `public string Message {get; set;}` 等同于：
+
+```cs
+public string _message;
+
+public string Message {
+    get {
+        return _message
+    }
+    set {
+        _message = value;
+    }
+}
+```
+
+上述代码中，构造函数中没有初始化 `message`，因此其默认值为 `Null`，但是因为该属性是可以修改的（`set`），因此我们可以选择性地为该属性赋值。比如：
+
+```cs
+[DeBugInfo(1, "shane", "31/Jan/2025", Message = "This is a Box class.")]
+// 或者
+[DeBugInfo(1, "shane", "31/Jan/2025"]
+```
+
+### C# 反射
+
+反射指程序可以访问、检测和修改它本身状态或行为的一种能力。您可以使用反射动态地创建类型的实例，将类型绑定到现有对象，或从现有对象中获取类型。然后，可以调用类型的方法或访问其字段和属性。
+
+反射（Reflection）有下列用途：
+
+- 它允许在运行时查看特性（attribute）信息。
+- 它允许审查集合中的各种类型，以及实例化这些类型。
+- 它允许延迟绑定的方法和属性（property）。
+- 它允许在运行时创建新类型，然后使用这些类型执行一些任务。
+
+在下一章中有具体的例子，使用反射获取所有*特性元信息*。
+
+### C# 特性
+
+允许开发者向代码元素（如类、方法、属性、字段等）添加额外的信息。这些信息可以在编译时或运行时被访问，从而影响程序的行为或提供额外的功能。
+
+特性常常配合**反射**使用。
+
+1. `[AttributeUsage]` 定义特性的使用范围。指定了自定义特性可以应用到哪些代码元素上（如类、方法、属性等），以及是否允许多次应用到同一个目标上，如：
+
+    ```cs
+    [AttributeUsage(AttributeTargets.Class |
+                    AttributeTargets.Constructor |
+                    AttributeTargets.Field |
+                    AttributeTargets.Method |
+                    AttributeTargets.Property,
+                    AllowMultiple = true)]
+    ```
+
+2. 特定都需要继承自 `System.Attribute`
+
+    ```cs
+    public class MyCustomAttribute : Attribute
+    {
+        public string Description { get; }
+
+        public MyCustomAttribute(string description)
+        {
+            Description = description;
+        }
+    }
+    ```
+    上述代码中的 `get;` 是访问器，表明该属性是只读的，一旦初始化后，只能读取，不能修改。
+
+3. 实例：
+
+    ```cs
+    using System.Reflection;
+
+    // 获取类上的 DeBugInfo 特性
+    var classAttributes = typeof(Box).GetCustomAttributes(typeof(DeBugInfo), false);
+    foreach (DeBugInfo attr in classAttributes)
+    {
+        Console.WriteLine("Class DeBugInfo:");
+        Console.WriteLine($"  BugNo: {attr.BugNo}");
+        Console.WriteLine($"  Developer: {attr.Developer}");
+        Console.WriteLine($"  LastReview: {attr.LastReview}");
+        Console.WriteLine($"  Message: {attr.Message}\n");
+    }
+
+    // 获取方法上的 DeBugInfo 特性
+   var methodAttributes = typeof(Box).GetMethod("GetArea").GetCustomAttributes(typeof(DeBugInfo), false);
+    foreach (DeBugInfo attr in methodAttributes)
+    {
+        Console.WriteLine("Method DeBugInfo:");
+        Console.WriteLine($"  BugNo: {attr.BugNo}");
+        Console.WriteLine($"  Developer: {attr.Developer}");
+        Console.WriteLine($"  LastReview: {attr.LastReview}");
+        Console.WriteLine($"  Message: {attr.Message}\n");
+    }
+
+
+    [AttributeUsage(
+        AttributeTargets.Method |
+        AttributeTargets.Class |
+        AttributeTargets.Constructor
+        , AllowMultiple = true)]
+
+    public class DeBugInfo : Attribute {
+      public int BugNo {get;}
+      public string Developer {get;}
+      public string LastReview {get;}
+      public string Message {get; set;}
+
+
+      public DeBugInfo(int bg, string dev, string lr) {
+        BugNo = bg;
+        Developer = dev;
+        LastReview = lr;
+      }
+    }
+
+    [DeBugInfo(1, "shane", "31/Jan/2025", Message = "This is a Box class.")]
+    class Box {
+      protected double length;
+      protected double width;
+      
+      public Box(double l, double w) {
+        length = l;
+        width = w;
+      }
+
+      [DeBugInfo(2, "shane", "31/Jan/2025", Message = "This is a getArea method.")]
+      public double GetArea() {
+        return width * length;
+      }
+    }
+    ```
+### C# 索引器
+
+### C# 委托
