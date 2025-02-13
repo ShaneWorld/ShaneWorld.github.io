@@ -4,7 +4,6 @@ date: 2025-01-26T13:57:48+08:00
 description: jekyll-theme-chirpy 建站过程
 lastmod: 2025-01-26T13:57:48+08:00
 avatar: /me/shane.png
-cover: https://gitee.com/shanegitee/pictures/raw/master/blog-with-chirpy.webp
 categories:
   - Blog
 tags:

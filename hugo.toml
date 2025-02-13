@@ -36,7 +36,7 @@ noClasses = false
 # series = "series"
 
 [params]
-# zenMode = true
+zenMode = true
 
 lightTheme = "emerald"
 darkTheme = "forest"

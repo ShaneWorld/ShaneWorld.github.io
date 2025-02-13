@@ -5,7 +5,6 @@ date: 2025-01-28T05:55:07+08:00
 lastmod: 2025-01-28T05:55:07+08:00
 author: Shane
 avatar: /me/shane.png
-cover: https://gitee.com/shanegitee/pictures/raw/master/blog-with-hugo.webp
 categories:
   - Blog
 tags:
